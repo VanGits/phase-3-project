@@ -10,9 +10,12 @@ const Post = ({ posts, onEditPost }) => {
   const [content, setContent] = useState("");
   const history = useHistory();
 
-  const handleEditClick = (id) => {
-    setTitle(posts[id - 1].title);
-    setContent(posts[id - 1].content);
+  console.log(posts[0])
+
+  const handleEditClick = (index) => {
+    console.log(posts[index])
+    setTitle(posts[index].title);
+    setContent(posts[index].content);
     setIsEditing(true);
   };
   const handleTitleChange = (e) => {
@@ -46,13 +49,13 @@ const Post = ({ posts, onEditPost }) => {
       });
   };
   // Normal display of post
-  const postDisplay = posts.map((post) => {
+  const postDisplay = posts.map((post, index) => {
     if (post.id === parseInt(id)) {
       return (
         <div className="post-content" key={post.id}>
           <h1>{post.title}</h1>
           <p>{post.content}</p>
-          <button type="submit" onClick={() => handleEditClick(post.id)}>
+          <button type="submit" onClick={() => handleEditClick(index)}>
             Edit
           </button>
         </div>
