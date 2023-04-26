@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 import "../styles/Main.css"
 
-const Main = () => {
-
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        fetch("http://localhost:9292/posts")
-        .then(res => res.json())
-        .then(postData => setPosts(postData))
-    }, [])
+const Main = ({posts}) => {
 
     
 
+    
+
+    
+    const handleClick = () => {
+
+    }
 
     return (
         <div className='Main'>
             <div className="main-wrapper">
             {posts.map((post) => {
                 return (
-                    <div className='post-wrapper' key={post.id}> 
-                         <h1>{post.title}</h1>
+                    <div className='post-wrapper' key={post.id} onClick={handleClick}> 
+                         <h2>{post.title}</h2>
                     </div>
                    
                 )
