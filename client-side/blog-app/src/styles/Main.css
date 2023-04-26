@@ -23,6 +23,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  
 }
 
 .post-wrapper:hover{
@@ -30,6 +31,7 @@
 }
 
 .add-post{
+    margin-top: 48px;
     background-color: transparent;
     color: black;
     border: 3px dashed #fff;
@@ -42,4 +44,14 @@
 
 .add-post:hover{
     background-color: transparent;
+}
+.delete{
+    
+   
+    z-index: 999;
+    font-size: 24px;
+    color: red;
+    border-radius: 24px;
+    cursor: pointer;
+   
 }

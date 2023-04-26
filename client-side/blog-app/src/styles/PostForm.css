@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-.post-form-content{
+.post-form-content, .patch-form-content{
     height: 100%;
     width: 80%;
    
@@ -21,7 +21,7 @@
     background-color: white;
 }
 
-.post-form-content #title {
+.post-form-content #title, .patch-form-content #title {
     font-size: 46px;
     font-weight: bold;
     padding: 24px;
@@ -31,7 +31,7 @@
     background-color: transparent;
   }
 
-  .post-form-content #content {
+  .post-form-content #content, .patch-form-content #content {
     font-size: 1rem;
     padding: 32px;
    

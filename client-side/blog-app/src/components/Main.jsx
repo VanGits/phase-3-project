@@ -1,8 +1,9 @@
 import React from "react";
 import "../styles/Main.css";
 import { useHistory } from "react-router-dom";
+import { RxCross2 } from 'react-icons/rx';
 
-const Main = ({ posts }) => {
+const Main = ({ posts, onPostDelete }) => {
   const history = useHistory();
 
   const handlePostClick = (id) => {
@@ -12,17 +13,33 @@ const Main = ({ posts }) => {
     history.push('/create-post')
   }
 
+  const handleDelete = (id) => {
+   
+    
+    fetch(`http://localhost:9292/posts/${id}`, {
+      method: "DELETE",
+      
+      });
+
+      onPostDelete(id)
+    
+  }
+
   return (
     <div className="Main">
       <div className="main-wrapper">
         {posts.map((post) => {
           return (
+            <div>
+            <RxCross2 className="delete" onClick={() => handleDelete(post.id)}/>
             <div
               className="post-wrapper"
               key={post.id}
               onClick={() => handlePostClick(post.id)}
             >
+                
               <h2>{post.title}</h2>
+            </div>
             </div>
           );
         })}

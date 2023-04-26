@@ -16,15 +16,34 @@ function App() {
   const handleNewPost = (newPost) => {
     setPosts([...posts, newPost])
   }
+
+  const handleEditPost = (editPost) => {
+    const updatedPosts = posts.map((post) => {
+      if (editPost.id === post.id){
+        return editPost
+      } else {
+        return post
+      }
+    })
+    setPosts(updatedPosts)
+  }
+
+  const handleDeletePost = (id) => {
+    const newPosts = posts.filter((post) => {
+      return post.id !== id
+    })
+    setPosts(newPosts)
+
+  }
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Main posts={posts} />
+            <Main posts={posts} onPostDelete={handleDeletePost} />
           </Route>
           <Route path="/posts/:id">
-            <Post posts={posts}/>
+            <Post posts={posts} onEditPost = {handleEditPost}/>
           </Route>
           <Route path="/create-post">
             <PostForm onAddPost = {handleNewPost}/>

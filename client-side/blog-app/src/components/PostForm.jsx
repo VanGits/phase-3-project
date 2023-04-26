@@ -16,28 +16,30 @@ const PostForm = ({ onAddPost }) => {
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-   
-    fetch("http://localhost:9292/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: title,
-        content: content,
-      }),
-    })
-      .then((r) => r.json())
-      .then((newPost) => {
-        
-        onAddPost(newPost);
-        
-        setTitle("");
-        setContent("")
-        alert("Submitted!")
-        history.push("/")
-        
-      });
+
+    if (title.length > 0 && content.length > 0) {
+      fetch("http://localhost:9292/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title,
+          content: content,
+        }),
+      })
+        .then((r) => r.json())
+        .then((newPost) => {
+          onAddPost(newPost);
+
+          setTitle("");
+          setContent("");
+          alert("Submitted!");
+          history.push("/");
+        });
+    } else {
+        alert("Please fill in the input fields!")
+    }
   };
 
   return (
@@ -49,9 +51,7 @@ const PostForm = ({ onAddPost }) => {
           id="content"
           placeholder="Content"
         />
-        <button type="submit" >
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
