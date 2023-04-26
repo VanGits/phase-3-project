@@ -30,11 +30,11 @@ const Main = ({ posts, onPostDelete }) => {
       <div className="main-wrapper">
         {posts.map((post) => {
           return (
-            <div>
-            <RxCross2 className="delete" onClick={() => handleDelete(post.id)}/>
+            <div key={post.id}> 
+            <RxCross2 className="delete"  onClick={() => handleDelete(post.id)}/>
             <div
               className="post-wrapper"
-              key={post.id}
+             
               onClick={() => handlePostClick(post.id)}
             >
                 
