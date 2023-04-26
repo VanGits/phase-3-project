@@ -12,6 +12,10 @@ function App() {
       .then((res) => res.json())
       .then((postData) => setPosts(postData));
   }, []);
+
+  const handleNewPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,7 +27,7 @@ function App() {
             <Post posts={posts}/>
           </Route>
           <Route path="/create-post">
-            <PostForm posts={posts}/>
+            <PostForm onAddPost = {handleNewPost}/>
           </Route>
 
         </Switch>
