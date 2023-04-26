@@ -14,7 +14,7 @@ const Post = ({posts}) => {
 
         
         if (post.id === parseInt(id)){
-            console.log(post)
+           
             return (
                 <div className='post-content' key={post.id}>
                     <h1>{post.title}</h1>

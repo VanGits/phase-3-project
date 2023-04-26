@@ -28,3 +28,18 @@
 .post-wrapper:hover{
     background-color: #dbdbdb;
 }
+
+.add-post{
+    background-color: transparent;
+    color: black;
+    border: 3px dashed #fff;
+}
+
+.add-post h1{
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+}
+
+.add-post:hover{
+    background-color: transparent;
+}
