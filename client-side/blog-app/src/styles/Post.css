@@ -29,7 +29,7 @@
     justify-self: flex-start;
     width: 100%;
     
-    padding: 12px;
+    padding: 24px;
 }
 
 .post-content p{
@@ -37,5 +37,5 @@
     align-self: flex-start;
     justify-self: flex-start;
     height: 100%;
-    padding: 12px;
+    padding: 32px;
 }

@@ -1,0 +1,56 @@
+.PostForm{
+    height: 100vh;
+    width: 100%;
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-form-content{
+    height: 100%;
+    width: 80%;
+   
+   
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+    background-color: white;
+}
+
+.post-form-content #title {
+    font-size: 46px;
+    font-weight: bold;
+    padding: 24px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  .post-form-content #content {
+    font-size: 1rem;
+    padding: 32px;
+   
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    height: 100%;
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: flex-end;
+  }

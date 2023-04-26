@@ -3,6 +3,7 @@ import Main from "./components/Main";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Post from "./components/Post";
 import React, { useEffect, useState } from "react";
+import PostForm from "./components/PostForm";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -21,6 +22,10 @@ function App() {
           <Route path="/posts/:id">
             <Post posts={posts}/>
           </Route>
+          <Route path="/create-post">
+            <PostForm posts={posts}/>
+          </Route>
+
         </Switch>
       </BrowserRouter>
     </div>
