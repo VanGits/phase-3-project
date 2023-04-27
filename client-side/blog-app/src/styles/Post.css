@@ -13,6 +13,7 @@
 .post-content {
     height: 100%;
     max-width: 900px;
+    max-height: 100vh;
     width: 100%;
     word-wrap: break-word;
    
@@ -23,6 +24,7 @@
     flex-direction: column;
     
     background-color: white;
+    overflow-y:scroll;
    
 }
 

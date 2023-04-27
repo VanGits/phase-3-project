@@ -4,17 +4,17 @@ import "../styles/Post.css";
 import { useHistory } from "react-router-dom";
 import Comments from "./Comments";
 
-const Post = ({ posts, onEditPost }) => {
+const Post = ({ posts, onEditPost, onAddComment, comments, setComments }) => {
   const { id } = useParams();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const history = useHistory();
 
-  console.log(posts[0])
+ 
 
   const handleEditClick = (index) => {
-    console.log(posts[index])
+    
     setTitle(posts[index].title);
     setContent(posts[index].content);
     setIsEditing(true);
@@ -84,7 +84,7 @@ const Post = ({ posts, onEditPost }) => {
     }
   });
   return (
-    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments/></div>
+    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments onAddComment = {onAddComment} comments = {comments} setComments = {setComments}/></div>
   );
 };
 

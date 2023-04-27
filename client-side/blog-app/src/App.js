@@ -5,8 +5,13 @@ import Post from "./components/Post";
 import React, { useEffect, useState } from "react";
 import PostForm from "./components/PostForm";
 
+
+
 function App() {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([])
+  
+ 
 
   // Get all posts
   useEffect(() => {
@@ -14,8 +19,20 @@ function App() {
       .then((res) => res.json())
       .then((postData) => setPosts(postData));
   }, []);
+  console.log(comments)
+
+  // Get all comments
+
+  useEffect(() => {
+    fetch("http://localhost:9292/comments")
+      .then((res) => res.json())
+      .then((commentsData) => setComments(commentsData));
+  }, []);
+
 
   
+
+
 
   const handleNewPost = (newPost) => {
     setPosts([...posts, newPost])
@@ -39,6 +56,11 @@ function App() {
     setPosts(newPosts)
 
   }
+
+  const handleNewComment = (newComment) => {
+    console.log(newComment)
+    setComments([...comments, newComment])
+  }
   return (
     <div className="App">
       <BrowserRouter>
@@ -47,7 +69,7 @@ function App() {
             <Main posts={posts} onPostDelete={handleDeletePost} />
           </Route>
           <Route path="/posts/:id">
-            <Post posts={posts} onEditPost = {handleEditPost}/>
+            <Post posts={posts} onEditPost = {handleEditPost} setComments = {setComments} comments = {comments} onAddComment={handleNewComment}/>
           </Route>
           <Route path="/create-post">
             <PostForm onAddPost = {handleNewPost}/>

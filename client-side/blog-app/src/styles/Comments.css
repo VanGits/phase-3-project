@@ -5,6 +5,36 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 24px;
     
+}
+
+.Comments input{
+    font-size: 12px;
+    
+    padding: 12px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: white;
+    border-radius: 5px;
+   
+}
+
+.comment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.comment h2{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 150px;
 }
