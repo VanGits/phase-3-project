@@ -19,7 +19,7 @@ function App() {
       .then((res) => res.json())
       .then((postData) => setPosts(postData));
   }, []);
-  console.log(comments)
+  
 
   // Get all comments
 
@@ -58,7 +58,7 @@ function App() {
   }
 
   const handleNewComment = (newComment) => {
-    console.log(newComment)
+    
     setComments([...comments, newComment])
   }
   return (
