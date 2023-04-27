@@ -3,7 +3,7 @@ import "../styles/Main.css";
 import { useHistory } from "react-router-dom";
 import { RxCross2 } from 'react-icons/rx';
 
-const Main = ({ posts, onPostDelete }) => {
+const Main = ({ posts, onPostDelete, url }) => {
   const history = useHistory();
 
   const handlePostClick = (id) => {
@@ -16,7 +16,7 @@ const Main = ({ posts, onPostDelete }) => {
   const handleDelete = (id) => {
    
     
-    fetch(`http://localhost:9292/posts/${id}`, {
+    fetch(`${url}/posts/${id}`, {
       method: "DELETE",
       
       });

@@ -10,12 +10,14 @@ import PostForm from "./components/PostForm";
 function App() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([])
+  const isLocalhost = window.location.hostname === 'localhost';
+  const url = isLocalhost ? 'http://localhost:9292' : 'https://phase-3-back-end.onrender.com';
   
  
 
   // Get all posts
   useEffect(() => {
-    fetch("http://localhost:9292/posts")
+    fetch(`${url}/posts`)
       .then((res) => res.json())
       .then((postData) => setPosts(postData));
   }, []);
@@ -24,7 +26,7 @@ function App() {
   // Get all comments
 
   useEffect(() => {
-    fetch("http://localhost:9292/comments")
+    fetch(`${url}/comments`)
       .then((res) => res.json())
       .then((commentsData) => setComments(commentsData));
   }, []);
@@ -66,13 +68,13 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Main posts={posts} onPostDelete={handleDeletePost} />
+            <Main posts={posts} onPostDelete={handleDeletePost} url = {url} />
           </Route>
           <Route path="/posts/:id">
-            <Post posts={posts} onEditPost = {handleEditPost} setComments = {setComments} comments = {comments} onAddComment={handleNewComment}/>
+            <Post posts={posts} onEditPost = {handleEditPost} setComments = {setComments} comments = {comments} onAddComment={handleNewComment} url ={url}/>
           </Route>
           <Route path="/create-post">
-            <PostForm onAddPost = {handleNewPost}/>
+            <PostForm onAddPost = {handleNewPost} url = {url}/>
           </Route>
 
         </Switch>

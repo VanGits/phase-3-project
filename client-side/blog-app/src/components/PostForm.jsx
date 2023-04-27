@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/PostForm.css";
 import { useHistory } from "react-router-dom";
-const PostForm = ({ onAddPost }) => {
+const PostForm = ({ onAddPost, url }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const history = useHistory();
@@ -18,7 +18,7 @@ const PostForm = ({ onAddPost }) => {
     e.preventDefault();
 
     if (title.length > 0 && content.length > 0) {
-      fetch("http://localhost:9292/posts", {
+      fetch(`${url}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

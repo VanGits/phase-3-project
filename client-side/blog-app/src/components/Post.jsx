@@ -4,7 +4,7 @@ import "../styles/Post.css";
 import { useHistory } from "react-router-dom";
 import Comments from "./Comments";
 
-const Post = ({ posts, onEditPost, onAddComment, comments, setComments }) => {
+const Post = ({ posts, onEditPost, onAddComment, comments, setComments, url }) => {
   const { id } = useParams();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
@@ -29,7 +29,7 @@ const Post = ({ posts, onEditPost, onAddComment, comments, setComments }) => {
 
   const handleSubmitPatch = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:9292/posts/${id}`, {
+    fetch(`${url}/posts/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const Post = ({ posts, onEditPost, onAddComment, comments, setComments }) => {
     }
   });
   return (
-    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments onAddComment = {onAddComment} comments = {comments} setComments = {setComments}/></div>
+    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments onAddComment = {onAddComment} comments = {comments} setComments = {setComments} url ={url}/></div>
   );
 };
 

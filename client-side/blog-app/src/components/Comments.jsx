@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-const Comments = ({onAddComment, comments, setComments}) => {
+const Comments = ({onAddComment, comments, setComments, url}) => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -13,7 +13,7 @@ const Comments = ({onAddComment, comments, setComments}) => {
   const [body, setBody] = useState("")
   // Get comments from each post
   useEffect(() => {
-    fetch(`http://localhost:9292/posts/${id}/comments`)
+    fetch(`${url}/posts/${id}/comments`)
     .then((res) => res.json())
     .then((commentsData) => setComments(commentsData));
   }, []);
@@ -28,7 +28,7 @@ const Comments = ({onAddComment, comments, setComments}) => {
     e.preventDefault();
 
     if (body.length > 0 && name.length > 0) {
-      fetch(`http://localhost:9292/posts/${id}/comments`, {
+      fetch(`${url}/posts/${id}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
