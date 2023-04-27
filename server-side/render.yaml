@@ -1,6 +1,31 @@
-services:
-  - name: web
+
+env:
+  GEM_HOME: ".gems"
+  PATH: "./bin:./gems/bin:$PATH"
+  RUBY_VERSION: "3.0.0"
+
+build:
+  steps:
+    # Install dependencies
+    - name: "ruby"
+      args: ["bundle", "install", "--jobs=4", "--retry=3"]
+
+deploy:
+  steps:
+    # Migrate the database
+    - name: "ruby"
+      args: ["rake", "db:migrate"]
+
+run:
+  web:
+    # Use the built-in Rack server
+    adapter: "rack"
+    command: ["bundle", "exec", "rackup", "--port", "8080", "--host", "0.0.0.0", "-s", "puma"]
+    # Bind to all network interfaces, so the app is accessible from outside the container
+    bind: "0.0.0.0"
+    # Expose the default Sinatra port
+    port: 8080
+    # Set environment variables needed for the app
     env:
-      RACK_ENV: production
-    buildCommand: bundle install --without test
-    startCommand: bundle exec rackup config.ru --port $PORT --env production
+      RACK_ENV: "production"
+      DATABASE_URL: "sqlite3:///path/to/your/app/db/development.sqlite3"
