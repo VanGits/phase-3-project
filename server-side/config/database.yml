@@ -16,4 +16,6 @@ test:
 production:
   <<: *default
   adapter: sqlite3
+  production:
+  url: <%= ENV['DATABASE_URL'] %>
   database: db/development.sqlite3
