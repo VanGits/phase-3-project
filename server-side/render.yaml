@@ -28,4 +28,4 @@ run:
     # Set environment variables needed for the app
     env:
       RACK_ENV: "production"
-      DATABASE_URL: "sqlite3:///path/to/your/db/development.sqlite3"
+      DATABASE_URL: "sqlite3:///path/to/your/app/db/development.sqlite3"
