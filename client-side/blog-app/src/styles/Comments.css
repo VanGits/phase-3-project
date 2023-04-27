@@ -2,12 +2,13 @@
     background-color: rgb(15, 84, 124);
     height: 100%;
     width: 80%;
-    color: white;
+    color: white ;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     padding: 24px;
+    overflow-y:auto;
     
 }
 
@@ -20,13 +21,55 @@
     outline: none;
     background-color: white;
     border-radius: 5px;
+    margin-top: 12px;
    
+    
+    
+   
+}
+
+.Comments textarea{
+    font-size: 12px;
+    
+    padding: 12px;
+    width: 100%;
+    max-width: 500px;
+    border: none;
+    outline: none;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 12px;
+    resize: none;
+    height: 250px;
+    
+}
+
+.Comments h1{
+    color: white;
+    margin-top: 24px;
+}
+
+.Comments form{
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
 }
 
 .comment{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: white;
+    flex-direction: column;
+    color: #221e1e;
+    width: 500px;
+    padding: 24px;
+    border-radius: 12px;
+    margin-top: 24px;
     
 }
 
@@ -36,5 +79,24 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 150px;
+    
+    
+}
+
+.comment p{
+    margin-top: 24px;
+}
+
+.Comments button{
+    margin-top:  12px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: flex-end;
 }

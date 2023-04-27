@@ -56,20 +56,21 @@ const Comments = ({onAddComment, comments, setComments}) => {
   
   return (
     <div className="Comments">
+       <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Username" onChange={handleUserChange} value={name}/>
+        <textarea type="textarea" placeholder="Comment" onChange={handleCommentChange} value={body}/>
+        <button>Submit</button>
+      </form>
       <h1>Comments</h1>
       {comments.map((comment) => {
         return (
             <div className="comment">
-                <h2>{comment.name}</h2>
+                <h2>{comment.name} says</h2>
                 <p>{comment.body}</p>
             </div>
         )
       })}
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="User" onChange={handleUserChange}/>
-        <input type="text" placeholder="Comment" onChange={handleCommentChange}/>
-        <button>Submit</button>
-      </form>
+     
     </div>
   );
 };
