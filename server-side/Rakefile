@@ -22,3 +22,35 @@ task :console do
   ActiveRecord::Base.logger = Logger.new(STDOUT)
   Pry.start
 end
+
+require 'json'
+require 'net/http'
+
+desc 'Deploy to Render'
+task :deploy do
+  # Get the current Git commit hash
+  commit_hash = `git rev-parse HEAD`.chomp
+
+  # Get the Render deployment ID for this app
+  app_name = 'my-sinatra-app'
+  response = Net::HTTP.get_response(URI.parse("https://dashboard.render.com/api/v1/apps/#{app_name}/deploys"))
+  deploys = JSON.parse(response.body)['deploys']
+  latest_deploy = deploys.first
+  deploy_id = latest_deploy['id']
+
+  # Create a new Render deploy based on the current commit
+  uri = URI.parse("https://dashboard.render.com/api/v1/deploys/#{deploy_id}/redeploy")
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request['Authorization'] = "Bearer #{ENV['RENDER_TOKEN']}"
+  request['Content-Type'] = 'application/json'
+  request.body = {
+    'branch': 'main',
+    'commit': commit_hash,
+  }.to_json
+  response = http.request(request)
+
+  # Print the response
+  puts response.body
+end
