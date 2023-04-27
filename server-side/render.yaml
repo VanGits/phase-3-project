@@ -1,2 +1,6 @@
-web:
-  - command: bundle exec ruby application_controller.rb -p $PORT
+services:
+  - name: web
+    env:
+      RACK_ENV: production
+    buildCommand: bundle install --without test
+    startCommand: bundle exec rackup config.ru --port $PORT --env production
