@@ -45,9 +45,6 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rackup (1.0.0)
-      rack (< 3)
-      webrick
     rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -86,7 +83,6 @@ GEM
     tilt (2.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    webrick (1.8.1)
     zeitwerk (2.6.7)
 
 PLATFORMS
@@ -99,7 +95,6 @@ DEPENDENCIES
   rack-contrib (~> 2.3)
   rack-cors (~> 1.1)
   rack-test (~> 1.1)
-  rackup (~> 1.0)
   rake (~> 13.0)
   require_all (~> 3.0)
   rerun
@@ -107,8 +102,8 @@ DEPENDENCIES
   rspec-json_expectations (~> 2.2)
   sinatra (~> 2.1)
   sinatra-activerecord (~> 2.0)
-  sqlite3
+  sqlite3 (~> 1.4)
   thin (~> 1.8)
 
 BUNDLED WITH
-   2.2.22
+   2.4.12
