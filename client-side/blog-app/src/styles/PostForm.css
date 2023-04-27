@@ -5,12 +5,13 @@
     
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .post-form-content, .patch-form-content{
     height: 100%;
-    width: 80%;
+    width: 100%;
+    max-width: 900px;
    
    
     display: flex;

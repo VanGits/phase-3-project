@@ -7,11 +7,15 @@ import PostForm from "./components/PostForm";
 
 function App() {
   const [posts, setPosts] = useState([]);
+
+  // Get all posts
   useEffect(() => {
     fetch("http://localhost:9292/posts")
       .then((res) => res.json())
       .then((postData) => setPosts(postData));
   }, []);
+
+  
 
   const handleNewPost = (newPost) => {
     setPosts([...posts, newPost])

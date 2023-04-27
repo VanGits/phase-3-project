@@ -1,0 +1,10 @@
+.Comments{
+    background-color: rgb(15, 84, 124);
+    height: 100%;
+    width: 80%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

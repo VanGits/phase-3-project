@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/Post.css";
 import { useHistory } from "react-router-dom";
+import Comments from "./Comments";
 
 const Post = ({ posts, onEditPost }) => {
   const { id } = useParams();
@@ -83,7 +84,7 @@ const Post = ({ posts, onEditPost }) => {
     }
   });
   return (
-    <div className="Post">{isEditing ? postEditDisplay : postDisplay}</div>
+    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments/></div>
   );
 };
 
