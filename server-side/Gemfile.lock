@@ -33,12 +33,9 @@ GEM
     minitest (5.18.0)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.9)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (6.2.2)
-      nio4r (~> 2.0)
     rack (2.2.7)
     rack-contrib (2.3.0)
       rack (~> 2.0)
@@ -73,7 +70,6 @@ GEM
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
     ruby2_keywords (0.0.5)
-    rubygems-update (3.2.34)
     sinatra (2.2.4)
       mustermann (~> 2.0)
       rack (~> 2.2)
@@ -82,7 +78,7 @@ GEM
     sinatra-activerecord (2.0.26)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
-    sqlite3 (1.4.2)
+    sqlite3 (1.6.2-x86_64-linux)
     thin (1.8.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -100,8 +96,6 @@ DEPENDENCIES
   activerecord (~> 6.1)
   database_cleaner (~> 2.0)
   pry (~> 0.14.1)
-  puma
-  rack
   rack-contrib (~> 2.3)
   rack-cors (~> 1.1)
   rack-test (~> 1.1)
@@ -111,11 +105,10 @@ DEPENDENCIES
   rerun
   rspec (~> 3.10)
   rspec-json_expectations (~> 2.2)
-  rubygems-update (~> 3.2.3)
   sinatra (~> 2.1)
   sinatra-activerecord (~> 2.0)
-  sqlite3 (= 1.4.2)
+  sqlite3
   thin (~> 1.8)
 
 BUNDLED WITH
-   2.4.12
+   2.2.22
