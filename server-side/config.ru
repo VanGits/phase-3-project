@@ -1,7 +1,7 @@
 require_relative "./config/environment"
 require 'rubygems'
 require 'bundler/setup'
-require './app/controllers/application_controller.rb'
+require './app'
 
 # Allow CORS (Cross-Origin Resource Sharing) requests
 use Rack::Cors do
