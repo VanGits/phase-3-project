@@ -43,7 +43,7 @@ task :deploy do
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   request = Net::HTTP::Post.new(uri.request_uri)
-  request['Authorization'] = "Bearer #{ENV['RENDER_TOKEN']}"
+  request['Authorization'] = "Bearer #{ENV['https://api.render.com/deploy/srv-ch4vta5gk4q8parprqkg?key=Cg64SiEi4v4']}"
   request['Content-Type'] = 'application/json'
   request.body = {
     'branch': 'main',
