@@ -1,6 +1,5 @@
 require_relative "./config/environment"
-require 'rubygems'
-require 'bundler/setup'
+
 
 
 
