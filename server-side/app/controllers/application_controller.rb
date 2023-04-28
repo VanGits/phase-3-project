@@ -1,6 +1,5 @@
 
-require 'sinatra'
-require 'sinatra/activerecord'
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
@@ -12,21 +11,21 @@ class ApplicationController < Sinatra::Base
   get "/posts" do
     posts = Post.all
 
-    posts.to_json
+    posts.to_json(include: :comments)
   end
   # Get all comments
-  get "/comments" do
+  # get "/comments" do
 
-    comments = Comment.all
+  #   comments = Comment.all
 
-    comments.to_json
+  #   comments.to_json
 
-  end
+  # end
   # Get a post
   get "/posts/:id" do
     post = Post.find(params[:id])
 
-    post.to_json
+    post.to_json(include: :comments)
 
   end
   # Get all comments in a post
