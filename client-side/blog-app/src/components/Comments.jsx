@@ -1,29 +1,19 @@
 import React, { useState } from "react";
 import "../styles/Comments.css";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
-const Comments = ({onAddComment, comments, setComments, url}) => {
+const Comments = ({ onAddComment, url, posts = [] }) => {
   const { id } = useParams();
-  const history = useHistory();
 
-  
-  const [name, setName] = useState("")
-  const [body, setBody] = useState("")
-  // Get comments from each post
-  useEffect(() => {
-    fetch(`${url}/posts/${id}/comments`)
-    .then((res) => res.json())
-    .then((commentsData) => setComments(commentsData));
-  }, []);
+  const [name, setName] = useState("");
+  const [body, setBody] = useState("");
 
   const handleCommentChange = (e) => {
-    setBody(e.target.value)
-  }
+    setBody(e.target.value);
+  };
   const handleUserChange = (e) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -45,32 +35,48 @@ const Comments = ({onAddComment, comments, setComments, url}) => {
           setName("");
           setBody("");
           alert("Submitted!");
-        //   history.push("/")
-         
+          //   history.push("/")
         });
     } else {
-        alert("Please fill in the input fields!")
+      alert("Please fill in the input fields!");
     }
-  }
+  };
 
-  
+  const postComments = posts.map((post) => {
+    if (post.id === parseInt(id) && post.comments) {
+      const comments = post.comments.map((comment) => {
+        return (
+          <div className="comment" key={comment.id}>
+            <h2>{comment.name} says</h2>
+            <p>{comment.body}</p>
+          </div>
+        );
+      });
+      return comments;
+    } else {
+      return null;
+    }
+  });
+
   return (
     <div className="Comments">
-       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" onChange={handleUserChange} value={name}/>
-        <textarea type="textarea" placeholder="Comment" onChange={handleCommentChange} value={body}/>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={handleUserChange}
+          value={name}
+        />
+        <textarea
+          type="textarea"
+          placeholder="Comment"
+          onChange={handleCommentChange}
+          value={body}
+        />
         <button>Submit</button>
       </form>
       <h1>Comments</h1>
-      {comments.map((comment) => {
-        return (
-            <div className="comment">
-                <h2>{comment.name} says</h2>
-                <p>{comment.body}</p>
-            </div>
-        )
-      })}
-     
+      {postComments}
     </div>
   );
 };

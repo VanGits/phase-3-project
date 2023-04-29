@@ -4,17 +4,14 @@ import "../styles/Post.css";
 import { useHistory } from "react-router-dom";
 import Comments from "./Comments";
 
-const Post = ({ posts, onEditPost, onAddComment, comments, setComments, url }) => {
+const Post = ({ posts, onEditPost, url, onAddComment }) => {
   const { id } = useParams();
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const history = useHistory();
 
- 
-
   const handleEditClick = (index) => {
-    
     setTitle(posts[index].title);
     setContent(posts[index].content);
     setIsEditing(true);
@@ -61,6 +58,8 @@ const Post = ({ posts, onEditPost, onAddComment, comments, setComments, url }) =
           </button>
         </div>
       );
+    } else {
+      return null
     }
   });
   // Editing display (for users) of post
@@ -81,10 +80,15 @@ const Post = ({ posts, onEditPost, onAddComment, comments, setComments, url }) =
           <button type="submit">Submit</button>
         </form>
       );
+    } else {
+      return null
     }
   });
   return (
-    <div className="Post">{isEditing ? postEditDisplay : postDisplay}<Comments onAddComment = {onAddComment} comments = {comments} setComments = {setComments} url ={url}/></div>
+    <div className="Post">
+      {isEditing ? postEditDisplay : postDisplay}
+      <Comments url={url} posts={posts} onAddComment={onAddComment} />
+    </div>
   );
 };
 

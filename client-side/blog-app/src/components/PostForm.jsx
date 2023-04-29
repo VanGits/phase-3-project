@@ -38,7 +38,7 @@ const PostForm = ({ onAddPost, url }) => {
           history.push("/");
         });
     } else {
-        alert("Please fill in the input fields!")
+      alert("Please fill in the input fields!");
     }
   };
 
